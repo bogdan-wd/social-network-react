@@ -1,23 +1,14 @@
-img{
+img {
   width: 100px;
 }
-.app-wrapper{
+
+.app-wrapper {
   display: grid;
   grid-template-rows: 100px 1fr;
   grid-template-columns: 2fr 10fr;
   height: 100vh;
 }
 
-.header{
-grid-column: 1 / -1;
-background: red;
-grid-row: 1 / 2;}
-
-
-.nav{
-background: green;
-}
-
-.content{
-background: yellow;
+.content {
+  background: #9e9e9e;
 }

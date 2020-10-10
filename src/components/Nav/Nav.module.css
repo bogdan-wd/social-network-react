@@ -1,3 +1,15 @@
-.nav {
-    background: green;
+.nav{
+    width: 100%;
+}
+.navList{
+    margin-top: 80px;
+}
+
+.navList li {
+    margin-top: 10px;
+    padding: 10px 0px 10px 30px;
+    background-color: #6e65f0;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    text-align: center;
 }

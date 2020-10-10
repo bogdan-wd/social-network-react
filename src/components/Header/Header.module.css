@@ -1,5 +1,6 @@
-.header{
-    grid-column: 1 / -1;
-    background: red;
-    grid-row: 1 / 2;}
-    
+.header {
+    grid-column: 2 / -1;
+    background: #C6D8D3;    
+    display: flex;
+    justify-content: end;
+}

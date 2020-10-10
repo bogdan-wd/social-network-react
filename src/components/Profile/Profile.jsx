@@ -1,22 +1,20 @@
 import React from 'react';
 import styles from './Profile.module.css';
-import logo from '../../../src/logo.svg'
+import photo from '../../../src/photo.png';
+import MyPosts from './MyPosts/MyPosts';
 
 const Profile = () => {
   return (
-    <div>
-      <div>
-        <img src={logo} alt="" />
-      </div>
-      <div>
-        avatar + desc
-      </div>
-      <div>
-        posts
+    <div className={styles.profile}>
+      
+      <div className={styles.profile__wrapper}>
+        <img src={photo} alt="" />
         <div>
-          new post
+          desc
         </div>
       </div>
+
+      <MyPosts />
     </div>
   );
 };
