@@ -7,15 +7,18 @@ import Nav from './components/Nav/Nav';
 import Profile from './components/Profile/Profile';
 import Sidebar from './components/Sidebar/Sidebar';
 
-function App () {
+function App (props) {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
         <Header />
         <Sidebar />
         <main className="content">
-          <Route exact path="/dialogs" component={Dialogs} />
-          <Route exact path="/profile" component={Profile} />
+          <Route exact path="/dialogs" 
+          render={() => <Dialogs state={props.state.dialogsPage} />} />
+
+          <Route exact path="/profile" 
+          render={() => <Profile state={props.state.profilePage} />} />
         </main>
       </div>
     </BrowserRouter>
