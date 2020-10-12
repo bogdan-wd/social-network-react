@@ -14,11 +14,22 @@ function App (props) {
         <Header />
         <Sidebar />
         <main className="content">
-          <Route exact path="/dialogs" 
-          render={() => <Dialogs state={props.state.dialogsPage} />} />
+          <Route
+            exact
+            path="/dialogs"
+            render={() => <Dialogs state={props.state.dialogsPage} />}
+          />
 
-          <Route exact path="/profile" 
-          render={() => <Profile state={props.state.profilePage} />} />
+          <Route
+            exact
+            path="/profile"
+            render={() => (
+              <Profile
+                dispatch={props.dispatch}
+                state={props.state.profilePage}
+              />
+            )}
+          />
         </main>
       </div>
     </BrowserRouter>
