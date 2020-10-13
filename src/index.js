@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import store from './redux/state';
+import store from './redux/store';
 import App from './App';
 
 let renderTree = state => {
@@ -18,4 +18,7 @@ let renderTree = state => {
 
 renderTree (store.getState ());
 
-store.subscribe (renderTree);
+store.subscribe (() =>{
+  let state = store.getState()
+  renderTree(state)
+});

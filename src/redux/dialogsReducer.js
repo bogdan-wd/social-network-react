@@ -1,6 +1,21 @@
 import {CHANGE_NEW_MESSAGE_BODY, SEND_MESSAGE} from './actionTypes';
 
-const dialogsReducer = (state, action) => {
+let initialState = {
+  dialogsData: [
+    {id: 1, name: 'User1'},
+    {id: 2, name: 'User2'},
+    {id: 3, name: 'User3'},
+  ],
+
+  messagesData: [
+    {id: 1, message: 'message1'},
+    {id: 2, message: 'message2'},
+    {id: 3, message: 'message3'},
+  ],
+  newMessageBody: '',
+};
+
+const dialogsReducer = (state = initialState, action) => {
   switch (action.type) {
     case CHANGE_NEW_MESSAGE_BODY:
       state.newMessageBody = action.body;
@@ -15,5 +30,17 @@ const dialogsReducer = (state, action) => {
       return state;
   }
 };
-
 export default dialogsReducer;
+
+export const sendMessageActionCreator = () => {
+  return {
+    type: SEND_MESSAGE,
+  };
+};
+
+export const changeNewMessageBodyCreator = text => {
+  return {
+    type: CHANGE_NEW_MESSAGE_BODY,
+    body: text,
+  };
+};
