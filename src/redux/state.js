@@ -1,7 +1,7 @@
-export const ADD_POST = 'ADD-POST';
-export const CHANGE_NEW_POST_TEXT = 'CHANGE-NEW-POST-TEXT';
-export const CHANGE_NEW_MESSAGE_BODY = 'CHANGE-NEW-MESSAGE-BODY';
-export const SEND_MESSAGE = 'SEND-MESSAGE';
+import { ADD_POST, CHANGE_NEW_MESSAGE_BODY, CHANGE_NEW_POST_TEXT, SEND_MESSAGE } from "./actionTypes";
+import dialogsReducer from "./dialogsReducer";
+import profileReducer from "./profileReducer";
+
 let store = {
   _state: {
     profilePage: {
@@ -38,27 +38,10 @@ let store = {
   },
 
   dispatch (action) {
-    if (action.type === ADD_POST) {
-      let newPost = {
-        id: 5,
-        message: this._state.profilePage.newPostText,
-        likeCount: 0,
-      };
-      this._state.profilePage.posts.push (newPost);
-      this._state.profilePage.newPostText = '';
-      this.renderTree (this._state);
-    } else if (action.type === CHANGE_NEW_POST_TEXT) {
-      this._state.profilePage.newPostText = action.newText;
-      this.renderTree (this._state);
-    } else if (action.type === CHANGE_NEW_MESSAGE_BODY) {
-      this._state.dialogsPage.newMessageBody = action.body;
-      this.renderTree (this._state);
-    } else if (action.type === SEND_MESSAGE) {
-      let body = this._state.dialogsPage.newMessageBody;
-      this._state.dialogsPage.messagesData.push ({id: 6, message: body});
-      body = '';
-      this.renderTree (this._state);
-    }
+    profileReducer(this._state.profilePage, action)
+    dialogsReducer(this._state.dialogsPage, action)
+
+    this.renderTree(this._state)
   },
 };
 export default store;
@@ -82,9 +65,9 @@ export const sendMessageActionCreator = () => {
   };
 };
 
-export const changeNewMessageBodyCreator = (text) => {
-  return{
+export const changeNewMessageBodyCreator = text => {
+  return {
     type: CHANGE_NEW_MESSAGE_BODY,
-    body: text
-  }
+    body: text,
+  };
 };
