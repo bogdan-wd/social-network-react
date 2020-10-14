@@ -2,6 +2,7 @@ import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
 import './App.css';
 import Dialogs from './components/Dialogs/Dialogs';
+import DialogsContainer from './components/Dialogs/DialogsContainer';
 import Header from './components/Header/Header';
 import Nav from './components/Nav/Nav';
 import Profile from './components/Profile/Profile';
@@ -17,7 +18,7 @@ function App (props) {
           <Route
             exact
             path="/dialogs"
-            render={() => <Dialogs store={props.store} />}
+            render={() => <DialogsContainer store={props.store} />}
           />
 
           <Route
@@ -25,8 +26,7 @@ function App (props) {
             path="/profile"
             render={() => (
               <Profile
-                dispatch={props.dispatch}
-                state={props.state.profilePage}
+               store={props.store}
               />
             )}
           />
