@@ -7,6 +7,7 @@ import Header from './components/Header/Header';
 import Nav from './components/Nav/Nav';
 import Profile from './components/Profile/Profile';
 import Sidebar from './components/Sidebar/Sidebar';
+import Users from './components/Users/User';
 
 function App (props) {
   return (
@@ -24,11 +25,13 @@ function App (props) {
           <Route
             exact
             path="/profile"
-            render={() => (
-              <Profile
-               store={props.store}
-              />
-            )}
+            render={() => <Profile store={props.store} />}
+          />
+
+          <Route
+            exact
+            path="/users"
+            render={() => <Users/> }
           />
         </main>
       </div>
