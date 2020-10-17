@@ -8,8 +8,7 @@ const Nav = () =>{
         <ul className={styles.navList}>
           <li><NavLink to="/profile">Profile</NavLink></li>
           <li><NavLink to="/dialogs">Messages</NavLink></li>
-          <li><a href="/profile">Profile</a></li>
-          <li><a href="/profile">Profile</a></li>
+          <li><NavLink to="/users">Users</NavLink></li>
         </ul>
       </nav> 
     )
