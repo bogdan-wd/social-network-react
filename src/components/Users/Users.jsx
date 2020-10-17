@@ -1,33 +1,15 @@
+import * as axios from 'axios';
 import React from 'react';
 import styles from './Users.module.css';
+import image from './../../../src/photo.png'
 
 const Users = props => {
   if (props.users.length === 0) {
-    props.setUsers ([
-      {
-        id: 1,
-        followed: false,
-        fullName: 'name',
-        status: 'boss',
-        location: {city: 'dnepr', country: 'Ukraine'},
-      },
-      {
-        id: 2,
-        followed: true,
-        fullName: 'name',
-        status: 'boss',
-        location: {city: 'dnepr', country: 'Ukraine'},
-      },
-      {
-        id: 3,
-        followed: true,
-        fullName: 'name',
-        status: 'boss',
-        location: {city: 'dnepr', country: 'Ukraine'},
-      },
-    ]);
+      let base = 'https://social-network.samuraijs.com/api/1.0';
+      axios.get(`${base}/users`).then(res => props.setUsers(res.data.items))
+    
   }
-
+  
   return (
     <div className={styles.wrapper}>
       {props.users.map (user => {
@@ -35,8 +17,8 @@ const Users = props => {
           <div className={styles.itemWrapper} key={user.id}>
             <div className={styles.leftPart}>
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/1200px-Instagram_logo_2016.svg.png"
-                alt=""
+                src={user.photos.small ? null : image}
+                alt="user photo"
               />
               {user.followed
                 ? <button
@@ -57,15 +39,15 @@ const Users = props => {
 
             <div className={styles.rightPart}>
               <div>
-                <p> Name: {user.fullName} </p>
+                <p> Name: {user.name} </p>
                 <p> Status: {user.status} </p>
               </div>
               <div>
                 <div>
-                  City: {user.location.city}
+                  City: {'user.city'}
                 </div>
                 <div>
-                  Country: {user.location.country}
+                  Country: {'user.country'}
                 </div>
 
               </div>
