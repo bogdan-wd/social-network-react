@@ -31,7 +31,7 @@ function App (props) {
           <Route
             exact
             path="/users"
-            render={() => <UsersContainer/> }
+            render={() => <UsersContainer store={props.store} />}
           />
         </main>
       </div>

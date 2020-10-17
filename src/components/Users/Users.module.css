@@ -1,0 +1,24 @@
+
+
+.itemWrapper {
+    margin: 10px;
+    display: flex;
+    flex: 1;
+    border-radius: 5px;
+    border: 2px solid blue;
+
+}
+
+.leftPart {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-right: 2px solid blue;
+}
+
+.rightPart {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}

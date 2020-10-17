@@ -1,17 +1,8 @@
 import {useReducer} from 'react';
-import Users from '../components/Users/User';
 import {FOLLOW, SET_USERS, UNFOLLOW} from './actionTypes';
 
 let initialState = {
-  users: [
-    {
-      id: 1,
-      followed: true,
-      fullName: 'name',
-      status: 'boss',
-      location: {city: 'dnepr', country: 'Ukraine'},
-    },
-  ],
+  users: [],
 };
 
 const usersReducer = (state = initialState, action) => {
