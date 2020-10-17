@@ -2,7 +2,7 @@ import {useReducer} from 'react';
 import Users from '../components/Users/User';
 import {FOLLOW, SET_USERS, UNFOLLOW} from './actionTypes';
 
-let ininitialState = {
+let initialState = {
   users: [
     {
       id: 1,
@@ -23,41 +23,49 @@ const usersReducer = (state = initialState, action) => {
           if (user.id === action.userId) {
             return {...user, followed: true};
           }
-          return u;
+          return user;
         }),
       };
     case UNFOLLOW:
-        return {
-            ...state,
-            users: state.users.map ((user, idx) => {
-              if (user.id === action.userId) {
-                return {...user, followed: false};
-              }
-              return u;
-            }),
-          };
-
-          case SET_USERS: 
-          return{
-              ...state, users: [...state.users, ...action.users]
+      return {
+        ...state,
+        users: state.users.map ((user, idx) => {
+          if (user.id === action.userId) {
+            return {...user, followed: false};
           }
+          return user;
+        }),
+      };
+
+    case SET_USERS:
+      return {
+        ...state,
+        users: [...state.users, ...action.users],
+      };
     default: {
       return state;
     }
   }
 };
 
-export const followActionCreator = () => {
-  {
-    type: FOLLOW, userId;
-  }
+export const followActionCreator = userId => {
+  return {
+    type: FOLLOW,
+    userId,
+  };
 };
-export const unfollowActionCreator = () => {
-  {
-    type: UNFOLLOW, userId;
-  }
+export const unfollowActionCreator = userId => {
+  return {
+    type: UNFOLLOW,
+    userId,
+  };
 };
 
-export const setUsersActionCreator = () =>{{type: SET_USERS, users}}
+export const setUsersActionCreator = (users) => {
+  return {
+    type: SET_USERS,
+    users,
+  };
+};
 
-export default useReducer;
+export default usersReducer;

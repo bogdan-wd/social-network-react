@@ -7,7 +7,7 @@ import Header from './components/Header/Header';
 import Nav from './components/Nav/Nav';
 import Profile from './components/Profile/Profile';
 import Sidebar from './components/Sidebar/Sidebar';
-import Users from './components/Users/User';
+import UsersContainer from './components/Users/UsersContainer';
 
 function App (props) {
   return (
@@ -31,7 +31,7 @@ function App (props) {
           <Route
             exact
             path="/users"
-            render={() => <Users/> }
+            render={() => <UsersContainer/> }
           />
         </main>
       </div>
