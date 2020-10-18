@@ -3,6 +3,9 @@ import {FOLLOW, SET_USERS, UNFOLLOW} from './actionTypes';
 
 let initialState = {
   users: [],
+  pageSize: 5,
+  totalUsersCount: 100,
+  currentPage: 1,
 };
 
 const usersReducer = (state = initialState, action) => {
