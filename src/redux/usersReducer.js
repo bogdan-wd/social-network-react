@@ -1,5 +1,5 @@
 import {useReducer} from 'react';
-import {FOLLOW, SET_USERS, UNFOLLOW} from './actionTypes';
+import {FOLLOW, SET_CURRENT_PAGE, SET_USERS, UNFOLLOW} from './actionTypes';
 
 let initialState = {
   users: [],
@@ -34,7 +34,12 @@ const usersReducer = (state = initialState, action) => {
     case SET_USERS:
       return {
         ...state,
-        users: [...state.users, ...action.users],
+        users: [...action.users],
+      };
+    case SET_CURRENT_PAGE:
+      return {
+        ...state,
+        currentPage: action.currentPage,
       };
     default: {
       return state;
@@ -55,10 +60,17 @@ export const unfollowActionCreator = userId => {
   };
 };
 
-export const setUsersActionCreator = (users) => {
+export const setUsersActionCreator = users => {
   return {
     type: SET_USERS,
     users,
+  };
+};
+
+export const setCurrentPageActionCreator = page => {
+  return {
+    type: SET_CURRENT_PAGE,
+    currentPage: page,
   };
 };
 

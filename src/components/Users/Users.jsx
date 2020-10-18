@@ -4,18 +4,23 @@ import styles from './Users.module.css';
 import image from './../../../src/photo.png';
 
 class Users extends Component {
-  getUsers = () => {
-    if (this.props.users.length === 0) {
+  getUsers = (page) => {
+    if (this.props.users) {
       let base = 'https://social-network.samuraijs.com/api/1.0';
-      let currentPage = this.props.currentPage;
+      let currentPage = page || this.props.currentPage;
       let pageSize = this.props.pageSize;
       axios
-        .get (`${base}/users?page=${currentPage}&count=${pageSize}`)
+        .get (`${base}/users?page=${page}&count=${pageSize}`)
         .then (res => this.props.setUsers (res.data.items));
     }
   };
   componentDidMount () {
-    this.getUsers ();
+    this.getUsers (this.props.currentPage);
+  }
+  
+  onPageChangeHandler = (page) =>{
+      this.props.setCurrentPage(page)
+      this.getUsers(page)
   }
 
   render () {
@@ -34,6 +39,7 @@ class Users extends Component {
           {pages.map ((page, idx) => {
             return (
               <span
+              onClick={() => this.onPageChangeHandler(page)}
                 key={idx}
                 className={
                   this.props.currentPage === page && styles.selectedPage
