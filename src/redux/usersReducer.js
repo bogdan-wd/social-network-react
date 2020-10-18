@@ -1,10 +1,16 @@
 import {useReducer} from 'react';
-import {FOLLOW, SET_CURRENT_PAGE, SET_USERS, UNFOLLOW} from './actionTypes';
+import {
+  FOLLOW,
+  SET_CURRENT_PAGE,
+  SET_TOTAL_USERS_COUNT,
+  SET_USERS,
+  UNFOLLOW,
+} from './actionTypes';
 
 let initialState = {
   users: [],
-  pageSize: 5,
-  totalUsersCount: 100,
+  pageSize: 10,
+  totalUsersCount: 0,
   currentPage: 1,
 };
 
@@ -41,6 +47,11 @@ const usersReducer = (state = initialState, action) => {
         ...state,
         currentPage: action.currentPage,
       };
+    case SET_TOTAL_USERS_COUNT:
+      return {
+        ...state,
+        totalUsersCount: action.totalUsersCount,
+      };
     default: {
       return state;
     }
@@ -71,6 +82,13 @@ export const setCurrentPageActionCreator = page => {
   return {
     type: SET_CURRENT_PAGE,
     currentPage: page,
+  };
+};
+
+export const setTotalUsersActionCreator = totalUsersCount => {
+  return {
+    type: SET_TOTAL_USERS_COUNT,
+    totalUsersCount,
   };
 };
 

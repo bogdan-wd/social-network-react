@@ -11,7 +11,11 @@ class Users extends Component {
       let pageSize = this.props.pageSize;
       axios
         .get (`${base}/users?page=${page}&count=${pageSize}`)
-        .then (res => this.props.setUsers (res.data.items));
+        .then (res => {
+            console.log(res.data.totalCount);
+            this.props.setUsers (res.data.items)
+            this.props.setTotalUsersCount(res.data.totalCount / 100)
+        });
     }
   };
   componentDidMount () {
